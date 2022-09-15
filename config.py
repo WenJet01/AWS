@@ -1,6 +1,6 @@
 customhost = "hrdata.cm7bwd3jwuqm.us-east-1.rds.amazonaws.com"
 customuser = "aws_user"
 custompass = "123123123"
-customdb = "hrdata"
+customdb = "hrData"
 custombucket = "cheewenjet-hrdata"
 customregion = "us-east-1"
