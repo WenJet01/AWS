@@ -153,27 +153,5 @@ def saveProfile():
     return render_template('directory.html', data = directoryData)
       
 
-
-
-@app.route('/important1', methods =['GET', 'POST'])
-def important1():
-    cursor.execute("SELECT * FROM employee")
-    directoryData = cursor.fetchall()
-    print(directoryData)
-    return render_template('important1.html', data = directoryData)
-
-
-@app.route('/important2', methods =['GET', 'POST'])
-def important2():
-    if request.method == 'POST':
-        data = request.form["input"]
-        print(data)
-        cursor.execute("SELECT * FROM employee WHERE emp_id="+data)
-        directoryData = cursor.fetchone()
-        print(directoryData)
-        return render_template('important2.html', data = directoryData)
-
-
-
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
