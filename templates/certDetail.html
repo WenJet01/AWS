@@ -354,15 +354,57 @@
     <!-- ======= Main ======= -->
     <main id="main" class="main">
 
-        <!-- Special title treatmen -->
-        <div class="card text-center">
-            
+        <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Performance Note Saved</h5>
-              <p class="card-text">Successfully saved Performance Note ID {{data}}</p>
-              <a class="btn btn-primary" onclick="window.open('', '_self', ''); window.close();">Close this tab</a>
+              <h5 class="card-title">Edit Certificate</h5>
+
+              <!-- Horizontal Form -->
+              <form action="/certEditSave" autocomplete="on" method = "POST" enctype="multipart/form-data">
+                <div class="row mb-3" style="display: none;">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">ID</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="inputText" value="{{data[0]}}" name="id">
+                    </div>
+                  </div>
+                
+                <div class="row mb-3">
+                  <label for="inputEmail3" class="col-sm-2 col-form-label">Employee ID</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputText" value="{{data[4]}}" name="emp_id">
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="inputDate" class="col-sm-2 col-form-label">Date</label>
+                    <div class="col-sm-10">
+                      <input type="date" class="form-control" value="{{data[1]}}" name="date">
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Certificate Name</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="inputText" value="{{data[2]}}" name="name">
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Given By</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="inputText" value="{{data[3]}}" name="given_by">
+                    </div>
+                  </div>
+
+ 
+
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="reset" class="btn btn-secondary">Reset</button>
+                </div>
+              </form><!-- End Horizontal Form -->
+
             </div>
-          </div><!-- End Special title treatmen -->
+          </div>
 
     </main><!-- End #main -->
 
