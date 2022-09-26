@@ -27,6 +27,10 @@ cursor = db_conn.cursor()
 def home():
     return render_template('index.html')
 
+@app.route("/portfolio", methods=['GET', 'POST'])
+def portfolio():
+    return render_template('portfolio.html')
+
 
 @app.route("/about", methods=['POST'])
 def about():
@@ -155,3 +159,4 @@ def saveProfile():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
+    
