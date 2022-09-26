@@ -198,6 +198,7 @@ def performanceAdd():
         print(data)
         return render_template('performanceAdd.html', data = data)
 
+
 @app.route('/performanceDetail', methods =['GET', 'POST'])
 def performanceDetail():
     if request.method == 'POST':
@@ -206,6 +207,7 @@ def performanceDetail():
         directoryData = cursor.fetchone()
         print(directoryData)
         return render_template('performanceDetail.html', data = directoryData)
+
 
 @app.route('/performanceSave', methods =['GET', 'POST'])
 def performanceSave():
@@ -309,6 +311,7 @@ def certEditSave():
 
         return render_template('success.html',data = id )
       
+
       
 
 if __name__ == '__main__':
