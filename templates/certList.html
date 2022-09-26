@@ -353,278 +353,55 @@
 
   <main id="main" class="main">
 
-    <div class="pagetitle">
-      <h1>Profile</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item">Users</li>
-          <li class="breadcrumb-item active">Profile</li>
-        </ol>
-      </nav>
-    </div><!-- End Page Title -->
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">All Certificates</h5>
 
-    <section class="section profile">
-      <div class="row">
-        <div class="col-xl-4" style="width: 20%;">
+        <!-- Table with hoverable rows -->
+        <table class="table table-hover">
+          <thead>
+            <tr> 
+              <th scope="col">ID</th>
+              <th scope="col">Employee ID</th>
+              <th scope="col">Date</th>
+              <th scope="col">Name</th>
+              <th scope="col">Given By</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in data %}    
+            
+              <tr>
+                  <td>{{row[0]}}</td>
+                  <td>{{row[4]}}</td>
+                  <td>{{row[1]}}</td>
+                  <td>{{row[2]}}</td>
+                  <td>{{row[3]}}</td>
+                  <td>
+                    <form action="/certDetail"  method = "POST" >
+                      <button formtarget="_blank"
+                      name="input" type="submit"
+                      formaction="/certDetail"
+                      value={{row[0]}}>View/Edit</button>
+                    </form></td>
+              </tr>
+            
+            {% endfor %}
+            
+            </td>
+          </tbody>
+        </table>
+        <!-- End Table with hoverable rows -->
+        <form action="/certAdd"  method = "POST" >
+          <button formtarget="_blank" class="btn btn-primary"
+          name="input" type="submit"
+          formaction="/certAdd"
+          value="">Add</button>
+        </form>
 
-          <div class="card" >
-            <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-
-              <img src='https://{{bucket}}.s3.amazonaws.com/emp-id-{{data[0]}}_image_file.jpg' alt="Profile" class="rounded-circle">
-              <h2>{{data[1]}} {{data[2]}}</h2>
-              
-            </div>
-          </div>
-
-        </div>
-
-        <div class="col-xl-8" style="width: 80%;">
-
-          <div class="card">
-            <div class="card-body pt-3">
-              <!-- Bordered Tabs -->
-              <ul class="nav nav-tabs nav-tabs-bordered">
-
-                <li class="nav-item">
-                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Overview</button>
-                </li>
-
-                <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Edit Profile</button>
-                </li>
-
-                <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Performance</button>
-                </li>
-
-                <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Certificates</button>
-                </li>
-
-              </ul>
-              <div class="tab-content pt-2">
-
-                <div class="tab-pane fade show active profile-overview" id="profile-overview">
-                  
-                  <h5 class="card-title">Profile Details</h5>
-
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label ">ID</div>
-                    <div class="col-lg-9 col-md-8">{{data[0]}}</div>
-                  </div>
-                  
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label ">First Name</div>
-                    <div class="col-lg-9 col-md-8">{{data[1]}}</div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Last Name</div>
-                    <div class="col-lg-9 col-md-8">{{data[2]}}</div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Primary Skill</div>
-                    <div class="col-lg-9 col-md-8">{{data[3]}}</div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Location</div>
-                    <div class="col-lg-9 col-md-8">{{data[4]}}</div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Salary Rate</div>
-                    <div class="col-lg-9 col-md-8">{{data[5]}}</div>
-                  </div>
-
-                  
-
-                </div>
-
-                <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
-
-                  <!-- Profile Edit Form -->
-                  <form action="/saveProfile" autocomplete="on" method = "POST" enctype="multipart/form-data">
-                    <div class="row mb-3" style="display: none">
-                      <label for="inputText" class="col-sm-2 col-form-label">ID</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" name="emp_id" value={{data[0]}} >
-                      </div>
-                    </div>
-          
-                    <div class="row mb-3">
-                      <label for="inputText" class="col-sm-2 col-form-label">First Name</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" name="first_name" value={{data[1]}}>
-                      </div>
-                    </div>
-          
-                    <div class="row mb-3">
-                      <label for="inputText" class="col-sm-2 col-form-label">Last Name</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" name="last_name" value={{data[2]}}>
-                      </div>
-                    </div>
-          
-                    <div class="row mb-3">
-                      <label for="inputText" class="col-sm-2 col-form-label">Primary Skill</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" name="pri_skill" value={{data[3]}}>
-                      </div>
-                    </div>
-          
-                    <div class="row mb-3">
-                      <label for="inputText" class="col-sm-2 col-form-label">Location</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" name="location" value={{data[4]}}>
-                      </div>
-                    </div>
-          
-                    <div class="row mb-3">
-                      <label for="inputNumber" class="col-sm-2 col-form-label">Salary Rate</label>
-                      <div class="col-sm-10">
-                        <input type="number" class="form-control" name="salary_rate" value={{data[5]}}>
-                      </div>
-                    </div>
-          
-                    <div class="row mb-3">
-                      <label for="inputNumber" class="col-sm-2 col-form-label">Profile image</label>
-                      <div class="col-sm-10">
-                        <input type=file name="emp_image_file" style="height:25px;font-size:14pt;color:grey;">
-                      </div>
-                    </div>
-          
-                    <div class="row mb-3">
-                      <label class="col-sm-2 col-form-label"></label>
-                      <div class="col-sm-10">
-                        <button type="submit" class="btn btn-primary">Save</button>
-                      </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <label class="col-sm-2 col-form-label"></label>
-                      <div class="col-sm-10">
-                        
-                        <button type="submit" class="btn btn-primary" style="background-color: red; border-color: red;" name="input" type="submit"
-                        formaction="/deleteProfile"
-                        value={{data[0]}}>Delete</button>
-                      </div>
-                    </div>
-
-                  </form><!-- End General Form Elements -->
-
-                  
-
-                </div>
-
-                <div class="tab-pane fade pt-3" id="profile-settings">
-
-                  <!-- Performance Form -->
-                  <form action="/performanceAdd" autocomplete="on" method = "POST" enctype="multipart/form-data">
-
-                    <table class="table table-hover" >
-                      <thead>
-                        <tr >
-                          <th scope="col" >ID</th>
-                          <th scope="col" >Date</th>
-                          <th scope="col" >Note</th>
-                          <th scope="col" ></th>
-                          <th scope="col" ></th>
-                          <th scope="col" ></th>
-                          <th scope="col" ></th>
-                          <th scope="col" ></th>
-
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {% for row in performance %}    
-                        
-                          <tr>
-                              <td>{{row[0]}}</td>
-                              <td>{{row[1]}}</td>
-                              <td colspan="6" style="word-wrap: break-word ; max-width: 1px;" >{{row[2]}}</td>
-                              
-                              <td>
-                                
-                                  <button formtarget="_blank"
-                                  name="input" type="submit"
-                                  formaction="/performanceDetail"
-                                  value={{row[0]}}>View / Edit</button>
-                                
-                          </tr>
-                        
-                        {% endfor %}
-                        
-                      </tbody>
-                    </table>
-                    <!-- End Table with hoverable rows -->
-
-                    <div class="text-center">
-                      <button type="submit" class="btn btn-primary" name="input" value={{data[0]}} formtarget="_blank">Add new note</button>
-                    </div>
-                  </form><!-- End settings Form -->
-
-                </div>
-
-                <div class="tab-pane fade pt-3" id="profile-change-password">
-                  <!-- Cert Form -->
-                  <form action="/certAdd" autocomplete="on" method = "POST" enctype="multipart/form-data">
-
-                    <table class="table table-hover" >
-                      <thead>
-                        <tr >
-                          <th scope="col" >ID</th>
-                          <th scope="col" >Date</th>
-                          <th scope="col" >Certificate Name</th>
-                          <th scope="col" >Given By</th>
-                          <th scope="col" ></th>
-                          <th scope="col" ></th>
-                          <th scope="col" ></th>
-                          
-
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {% for row in cert %}    
-                        
-                          <tr>
-                              <td>{{row[0]}}</td>
-                              <td>{{row[1]}}</td>
-                              <td>{{row[2]}}</td>
-                              <td colspan="4" style="word-wrap: break-word ; max-width: 1px;" >{{row[3]}}</td>
-                              
-                              <td>
-                                
-                                  <button formtarget="_blank"
-                                  name="input" type="submit"
-                                  formaction="/certDetail"
-                                  value={{row[0]}}>View / Edit</button>
-                                
-                          </tr>
-                        
-                        {% endfor %}
-                        
-                      </tbody>
-                    </table>
-                    <!-- End Table with hoverable rows -->
-
-                    <div class="text-center">
-                      <button type="submit" class="btn btn-primary" name="input" value={{data[0]}} formtarget="_blank">Add new certificate</button>
-                    </div>
-                  </form><!-- End cert Form -->
-
-                </div>
-
-              </div><!-- End Bordered Tabs -->
-
-            </div>
-          </div>
-
-        </div>
       </div>
-    </section>
+    </div>
 
   </main><!-- End #main -->
 
@@ -656,14 +433,6 @@
 
   <!-- Template Main JS File -->
   <script src="{{ url_for('static',filename='assets/js/main.js') }}"></script>
-  <script> 
-    function sendTimeToServer(){
-        var time = new Date();
-        var i = document.createElement("img");
-        i.src = "/getTime?time=" + time;
-        document.getElementById("time").innerHTML = time;
-    }
-    </script>
 
 </body>
 

@@ -356,38 +356,39 @@
 
         <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Edit Performance Note</h5>
+              <h5 class="card-title">Add Certificates</h5>
 
               <!-- Horizontal Form -->
-              <form action="/performanceEditSave" autocomplete="on" method = "POST" enctype="multipart/form-data">
-                <div class="row mb-3" style="display: none;">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">ID</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputText" value="{{data[0]}}" name="id">
-                    </div>
-                  </div>
-                
+              <form action="/certSave" autocomplete="on" method = "POST" enctype="multipart/form-data">
                 <div class="row mb-3">
                   <label for="inputEmail3" class="col-sm-2 col-form-label">Employee ID</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputText" value="{{data[3]}}" name="emp_id">
+                    <input type="text" class="form-control" id="inputText" value="{{data}}" name="emp_id">
                   </div>
                 </div>
 
                 <div class="row mb-3">
                     <label for="inputDate" class="col-sm-2 col-form-label">Date</label>
                     <div class="col-sm-10">
-                      <input type="date" class="form-control" value="{{data[1]}}" name="date">
+                      <input type="date" class="form-control"  name="date">
                     </div>
                   </div>
 
                 <div class="row mb-3">
-                  <label for="inputPassword3" class="col-sm-2 col-form-label">Note</label>
-                  <div class="col-sm-10">
-                    <textarea class="form-control" style="height: 100px" value="{{data[2]}}" name="note">{{data[2]}}</textarea>
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Certificate Name</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="inputText"  name="name">
+                    </div>
                   </div>
-                </div>
 
+                  <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Given By</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="inputText"  name="given_by">
+                    </div>
+                  </div>
+
+                
  
 
                 <div class="text-center">
