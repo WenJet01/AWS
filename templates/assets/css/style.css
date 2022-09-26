@@ -1258,3 +1258,90 @@ h6 {
   font-size: 13px;
   color: #012970;
 }
+
+.subheading {
+  color: #f34949;
+}
+
+.heading-section {
+  margin-bottom: 30px;
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+a {
+  color: #f34949;
+}
+
+a:focus,
+button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.btn:hover,
+a:hover {
+  text-decoration: none;
+  color: #e22104;
+}
+
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+}
+
+.btn-icon .lnr {
+  font-size: 30px;
+  margin-right: 10px;
+}
+
+.boxed-page {
+  position: relative;
+  border-color: #ededed;
+  background-color: #fff;
+}
+
+.boxed-page .section-padding {
+  padding-top: 65px;
+  padding-bottom: 65px;
+}
+
+@media (min-width: 992px) {
+  .boxed-page .section-padding {
+    padding-top: 130px;
+    padding-bottom: 130px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .boxed-page {
+    margin: 30px;
+  }
+}
+
+.overlay .section-content {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-primary {
+  display: inline-block;
+  background-color: #f34949;
+  border-color: #f34949;
+  color: #fff;
+  border-radius: 30px;
+  padding: 9px 25px;
+  text-transform: capitalize;
+  -webkit-transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+.btn-primary:hover {
+  background-color: #e22104;
+  border-color: #e22104;
+  color: #fff;
+}
