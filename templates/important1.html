@@ -1,40 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- list all employee document -->
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Dashboard - NiceAdmin Bootstrap Template</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+    <title>Dashboard - NiceAdmin Bootstrap Template</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
 
-  <!-- Favicons -->
-  <link href="{{ url_for('static',filename='assets/img/favicon.png') }}" rel="icon">
-  <link href="{{ url_for('static',filename='assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+    <!-- Favicons -->
+    <link href="{{ url_for('static',filename='assets/img/favicon.png') }}" rel="icon">
+    <link href="{{ url_for('static',filename='assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
-  <link href="{{ url_for('static',filename='assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-  <link href="{{ url_for('static',filename='assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-  <link href="{{ url_for('static',filename='assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
-  <link href="{{ url_for('static',filename='assets/vendor/quill/quill.snow.css') }}" rel="stylesheet">
-  <link href="{{ url_for('static',filename='assets/vendor/quill/quill.bubble.css') }}" rel="stylesheet">
-  <link href="{{ url_for('static',filename='assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
-  <link href="{{ url_for('static',filename='assets/vendor/simple-datatables/style.css') }}" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="{{ url_for('static',filename='assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='assets/vendor/quill/quill.snow.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='assets/vendor/quill/quill.bubble.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='assets/vendor/simple-datatables/style.css') }}" rel="stylesheet">
 
-  <!-- Template Main CSS File -->
-  <link href="{{ url_for('static',filename='assets/css/style.css') }}" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="{{ url_for('static',filename='assets/css/style.css') }}" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: NiceAdmin - v2.4.0
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    <!-- =======================================================
+    * Template Name: NiceAdmin - v2.4.0
+    * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
 </head>
 
 <body>
@@ -349,7 +350,6 @@
         </ul>
 
     </aside><!-- End Sidebar-->
-
     <!-- ======= Main ======= -->
     <main id="main" class="main">
 
@@ -364,10 +364,7 @@
                             <th scope="col">ID</th>
                             <th scope="col">First Name</th>
                             <th scope="col">Last Name</th>
-                            <th scope="col">Primary Skill</th>
-                            <th scope="col">Location</th>
-                            <th scope="col">Salary Rate</th>
-                            <th scope="col">Traning ID</th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -377,10 +374,6 @@
                             <td>{{row[0]}}</td>
                             <td>{{row[1]}}</td>
                             <td>{{row[2]}}</td>
-                            <td>{{row[3]}}</td>
-                            <td>{{row[4]}}</td>
-                            <td>{{row[5]}}</td>
-                            <td>{{row[6]}}</td>
                             <td>
                                 <form action="/important2" method="POST">
                                     <button formtarget="_blank"
@@ -403,7 +396,6 @@
         </div>
 
     </main><!-- End #main -->
-
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
         <div class="copyright">

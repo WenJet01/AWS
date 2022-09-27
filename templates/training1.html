@@ -113,7 +113,6 @@
         </nav><!-- End Icons Navigation -->
 
     </header><!-- End Header -->
-
     <!-- ======= Sidebar ======= -->
     <aside id="sidebar" class="sidebar">
 
@@ -350,66 +349,104 @@
         </ul>
 
     </aside><!-- End Sidebar-->
-   
+
     <!-- ======= Main ======= -->
     <main id="main" class="main">
 
-        <h5 class="card-title">Add Employee</h5>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">All training sessions</h5>
 
-        <!-- General Form Elements -->
-        <form action="/addemp"  autocomplete="on" method="POST" enctype="multipart/form-data">
-            <div class="row mb-3">
-                <label for="inputText" class="col-sm-2 col-form-label">Employee ID</label>
-                <div class="col-sm-10">
-                    <input type="text" name="emp_id" class="form-control">
-                </div>
-            </div>
-            <div class="row mb-3">
-                <label for="inputEmail" class="col-sm-2 col-form-label">First Name</label>
-                <div class="col-sm-10">
-                    <input type="text" name="first_name" class="form-control">
-                </div>
-            </div>
-            <div class="row mb-3">
-                <label for="inputPassword" class="col-sm-2 col-form-label">Last Name</label>
-                <div class="col-sm-10">
-                    <input type="text" name="last_name" class="form-control">
-                </div>
-            </div>
-            <div class="row mb-3">
-                <label for="inputNumber" class="col-sm-2 col-form-label">Primary Skills</label>
-                <div class="col-sm-10">
-                    <input type="text" name="pri_skill" class="form-control">
-                </div>
-            </div>
-            <div class="row mb-3">
-                <label for="inputNumber" class="col-sm-2 col-form-label">Location</label>
-                <div class="col-sm-10">
-                    <input type="text" name="location" class="form-control">
-                </div>
-            </div>
-            <div class="row mb-3">
-                <label for="inputNumber" class="col-sm-2 col-form-label">Salary Rate</label>
-                <div class="col-sm-10">
-                    <input type="number" name="salary_rate" class="form-control">
-                </div>
-            </div>
-            <div class="row mb-3">
-                <label for="inputNumber" class="col-sm-2 col-form-label">Profile picture</label>
-                <div class="col-sm-10">
-                    <input class="form-control" name="emp_image_file" type="file" accept="image/png, image/jpg, image/jpeg" id="formFile">
-                </div>
-            </div>            
-            <div class="row mb-3">
-                <label class="col-sm-2 col-form-label"></label>
-                <div class="col-sm-10">
-                    <button type="submit" class="btn btn-primary">Submit Form</button>
-                </div>
-            </div>
+                <!-- Default Tabs -->
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="train-tab" data-bs-toggle="tab" data-bs-target="#train" type="button" role="tab" aria-controls="train" aria-selected="true">All training sessions</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="employee-tab" data-bs-toggle="tab" data-bs-target="#employee" type="button" role="tab" aria-controls="employee" aria-selected="false">Employee</button>
+                    </li>
+                </ul>
 
-        </form><!-- End General Form Elements -->
+                <div class="tab-content pt-2" id="myTabContent">
+                    <div class="tab-pane fade show active" id="train" role="tabpanel" aria-labelledby="train-tab">
+                        <!-- Table with hoverable rows -->
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Training ID</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Location</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for row in data %}
 
-        
+                                <tr>
+                                    <td>{{row[0]}}</td>
+                                    <td>{{row[1]}}</td>
+                                    <td>{{row[2]}}</td>
+                                    <td>{{row[3]}}</td>
+                                    <td>
+                                        <form action="/training2" method="POST">
+                                            <button formtarget="_blank"
+                                                    name="input" type="submit"
+                                                    formaction="/training2"
+                                                    value={{row[0]}}>
+                                                Join
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+
+                                {% endfor %}
+
+                            </tbody>
+                        </table>
+                        <!-- End Table with hoverable rows -->
+                    </div>
+
+                    <div class="tab-pane fade" id="employee" role="tabpanel" aria-labelledby="employee-tab">
+                        <!-- Table with hoverable rows -->
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Employee ID</th>
+                                    <th scope="col">Training Session</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for row in data2 %}
+
+                                <tr>
+                                    <td>{{row[0]}}</td>
+                                    <td>{{row[6]}}</td>
+                                    <td>
+                                        <form action="/exitTraining" method="POST">
+                                            <button formtarget="_blank"
+                                                    name="input" type="submit"
+                                                    formaction="/exitTraining"
+                                                    value={{row[0]}}>
+                                                Exit
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+
+                                {% endfor %}
+
+                            </tbody>
+                        </table>
+                        <!-- End Table with hoverable rows -->
+                    </div>
+                </div>
+
+                    
+
+                </div>
+            </div>
 
     </main><!-- End #main -->
 
