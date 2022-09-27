@@ -24,13 +24,19 @@ db_conn = connections.Connection(
     db=customdb
 
 )
+cursor = db_conn.cursor()
+
 output = {}
 table = 'employee'
-cursor = db_conn.cursor()
+
 
 @app.route("/", methods=['GET', 'POST'])
 def home():
     return render_template('index.html')
+
+@app.route("/dashboard", methods=['GET', 'POST'])
+def dashboard():
+    return render_template('dashboard.html')
 
 @app.route("/portfolio", methods=['GET', 'POST'])
 def portfolio():
@@ -111,6 +117,7 @@ def editProfile():
 
 @app.route('/profile', methods =['GET', 'POST'])
 def profile():
+    cursor = db_conn.cursor()
     if request.method == 'POST':
         data = request.form["input"]
         print(data)
@@ -120,9 +127,11 @@ def profile():
         performanceData = cursor.fetchall()
         cursor.execute("SELECT * FROM cert WHERE emp_id="+data)
         certData = cursor.fetchall()
+        cursor.execute("SELECT * FROM payroll WHERE emp_id= '"+data+"'")
+        payrollData = cursor.fetchall()
         print(directoryData)
         print(performanceData)
-        return render_template('profile.html', data = directoryData, bucket=bucket, performance = performanceData, cert = certData)
+        return render_template('profile.html', data = directoryData, bucket=bucket, performance = performanceData, cert = certData, payroll = payrollData)
 
 @app.route("/saveProfile", methods=['POST'])
 def saveProfile():
@@ -181,7 +190,7 @@ def deleteProfile():
         data = request.form["input"]
         print(data)
         cursor.execute("DELETE FROM employee WHERE emp_id="+data)
-        return render_template('deletedProfile.html', data = data)
+        return render_template('success.html', bucket = bucket)
 
 @app.route('/performance', methods =['GET', 'POST'])
 def performance():
@@ -228,7 +237,7 @@ def performanceSave():
         cursor.execute(update_sql, (id,date,note,emp_id))
         db_conn.commit()
 
-        return render_template('success.html', data = id )
+        return render_template('success.html', bucket = bucket )
 
 @app.route('/performanceEditSave', methods =['GET', 'POST'])
 def performanceEditSave():
@@ -246,7 +255,15 @@ def performanceEditSave():
         cursor.execute(update_sql, (date,note,emp_id,id))
         db_conn.commit()
 
-        return render_template('success.html',data = id )
+        return render_template('success.html',bucket = bucket )
+
+@app.route('/performanceDelete', methods =['GET', 'POST'])
+def performanceDelete():
+    if request.method == 'POST':
+        data = request.form["input"]
+        print(data)
+        cursor.execute("DELETE FROM performanceNote WHERE note_id='"+data+"'")
+        return render_template('success.html', bucket = bucket)
 
 # cert
 @app.route('/cert', methods =['GET', 'POST'])
@@ -290,7 +307,7 @@ def certSave():
         cursor.execute(update_sql, (id,date,name,given_by,emp_id))
         db_conn.commit()
 
-        return render_template('success.html', data = id )
+        return render_template('success.html', bucket = bucket )
 
 @app.route('/certEditSave', methods =['GET', 'POST'])
 def certEditSave():
@@ -309,7 +326,15 @@ def certEditSave():
         cursor.execute(update_sql, (date,name,given_by,emp_id,id))
         db_conn.commit()
 
-        return render_template('success.html',data = id )
+        return render_template('success.html',bucket = bucket )
+
+@app.route('/certDelete', methods =['GET', 'POST'])
+def certDelete():
+    if request.method == 'POST':
+        data = request.form["input"]
+        print(data)
+        cursor.execute("DELETE FROM cert WHERE cert_id='"+data+"'")
+        return render_template('success.html', bucket = bucket)
       
 
       

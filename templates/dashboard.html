@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Dashboard - NiceAdmin Bootstrap Template</title>
+  <title>Dashboard </title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -352,24 +352,90 @@
     </aside><!-- End Sidebar-->
    
     <!-- ======= Main ======= -->
-    <main id="main" class="main">
+    <main id="main" class="main" style=" align-items: center; align-content: center; ">
+        <div style="width: 100%; display: flex;">
 
-        <!-- Special title treatmen -->
-        <div class="card text-center">
-            
-            <div class="card-body" style="padding-top: 30px ;">
-                <img src='https://{{bucket}}.s3.amazonaws.com/johnnyLeft.png' alt="Left"  height="150px">
-                <img src='https://{{bucket}}.s3.amazonaws.com/johnnyRight.png' alt="Right"  height="150px" >
-              <h5 class="card-title">Success!</h5>
-              <p class="card-text">Everything is working normally.</p>
-              <a class="btn btn-primary" onclick="window.open('', '_self', ''); window.close();">Close this tab</a>
+        <div class="card" style=" text-align: center ; width: 25%; margin-left: 5%;  flex: 1; height: 340px;">
+            <div class="card-body">
+                <div style="margin-top: 20px;margin-bottom: -10px;"><i class="bi bi-people-fill" style="font-size: 80px; color:  #2199df; "></i></div>
+              <h5 class="card-title">Employee Directory</h5>
+              <div style="height: 40px;"><h6 class="card-subtitle mb-2 text-muted" >View, edit & manage all Employee</h6></div>
+              
+              <p class="card-text" style="margin-top: 40px; ">
+                <a href="{{ url_for('directory') }}" class="btn btn-primary" style="background-color:  #2199df; border: none">Directory</a></p>
+
             </div>
-          </div><!-- End Special title treatmen -->
+          </div>
+
+          <div class="card" style=" text-align: center ; width: 25%; margin-left: 5%; flex: 1; height: 340px;">
+            <div class="card-body">
+                <div style="margin-top: 20px;margin-bottom: -10px;"><i class="bi bi-journal-bookmark-fill" style="font-size: 80px; color:  #3bbd08; "></i></div>
+              <h5 class="card-title">Performance Notes</h5>
+              <div style="height: 40px;"><h6 class="card-subtitle mb-2 text-muted" >View, edit & manage all Note on employees' performance</h6></div>
+              
+              <p class="card-text" style="margin-top: 40px;">
+                <a href="{{ url_for('performance') }}" class="btn btn-primary" style="background-color:  #3bbd08; border: none;">Performance Note</a></p>
+
+            </div>
+          </div>
+
+          <div class="card" style=" text-align: center ; width: 25%; margin-left: 5%;margin-right: 5%;  flex: 1; height: 340px;">
+            <div class="card-body">
+                <div style="margin-top: 20px;margin-bottom: -10px;"><i class="bi bi-trophy-fill" style="font-size: 80px; color:  #c4a707; "></i></div>
+              <h5 class="card-title">Certificates Records</h5>
+              <div style="height: 40px;"><h6 class="card-subtitle mb-2 text-muted" >View, edit & manage all Certificates Records for employees</h6></div>
+              
+              <p class="card-text" style="margin-top: 40px;">
+                <a href="{{ url_for('cert') }}" class="btn btn-primary" style="background-color:  #c4a707; border: none;">Certificate</a></p>
+
+            </div>
+          </div>
+        </div>
+
+
+        <div style="width: 100%; display: flex;margin-top: 30px;">
+
+            <div class="card" style=" text-align: center ; width: 25%; margin-left: 5%;  flex: 1; height: 340px;">
+                <div class="card-body">
+                    <div style="margin-top: 20px;margin-bottom: -10px;"><i class="bi bi-calendar-check-fill" style="font-size: 80px; color:  #ff189f; "></i></div>
+                  <h5 class="card-title">Employee Attendances</h5>
+                  <div style="height: 40px;"><h6 class="card-subtitle mb-2 text-muted" >View, edit & manage all Employee's attendance</h6></div>
+                  
+                  <p class="card-text" style="margin-top: 40px; ">
+                    <a href="{{ url_for('directory') }}" class="btn btn-primary" style="background-color:  #ff189f; border: none" >Attendance</a></p>
+    
+                </div>
+              </div>
+    
+              <div class="card" style=" text-align: center ; width: 25%; margin-left: 5%; flex: 1; height: 340px;">
+                <div class="card-body">
+                    <div style="margin-top: 20px;margin-bottom: -10px;"><i class="bi bi-file-earmark-medical-fill" style="font-size: 80px; color:  #4912df; "></i></div>
+                  <h5 class="card-title">Important Documents</h5>
+                  <div style="height: 40px;"><h6 class="card-subtitle mb-2 text-muted" >Store & retrieve documents on cloud storage</h6></div>
+                  
+                  <p class="card-text" style="margin-top: 40px;">
+                    <a href="{{ url_for('directory') }}" class="btn btn-primary" style="background-color:  #4912df; border: none;">Document</a></p>
+    
+                </div>
+              </div>
+    
+              <div class="card" style=" text-align: center ; width: 25%; margin-left: 5%;margin-right: 5%;  flex: 1; height: 340px;">
+                <div class="card-body">
+                    <div style="margin-top: 20px;margin-bottom: -10px;"><i class="bi bi-lightning-fill" style="font-size: 80px; color:  #e00d0d; "></i></div>
+                  <h5 class="card-title">Employee Trainings</h5>
+                  <div style="height: 40px;"><h6 class="card-subtitle mb-2 text-muted" >View, edit & manage all training activities for employees</h6></div>
+                  
+                  <p class="card-text" style="margin-top: 40px;">
+                    <a href="{{ url_for('directory') }}" class="btn btn-primary" style="background-color:  #e00d0d; border: none;">Training</a></p>
+    
+                </div>
+              </div>
+            </div>
 
     </main><!-- End #main -->
 
     <!-- ======= Footer ======= -->
-    <footer id="footer" class="footer">
+    <footer id="footer" class="footer" >
         <div class="copyright">
             &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
         </div>
@@ -380,7 +446,7 @@
             <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
             Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
         </div>
-    </footer><!-- End Footer -->
+    </footer>End Footer
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
