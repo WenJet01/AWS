@@ -1,40 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- view employee document -->
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Dashboard - NiceAdmin Bootstrap Template</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+    <title>Dashboard - NiceAdmin Bootstrap Template</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
 
-  <!-- Favicons -->
-  <link href="{{ url_for('static',filename='assets/img/favicon.png') }}" rel="icon">
-  <link href="{{ url_for('static',filename='assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+    <!-- Favicons -->
+    <link href="{{ url_for('static',filename='assets/img/favicon.png') }}" rel="icon">
+    <link href="{{ url_for('static',filename='assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
-  <link href="{{ url_for('static',filename='assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-  <link href="{{ url_for('static',filename='assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-  <link href="{{ url_for('static',filename='assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
-  <link href="{{ url_for('static',filename='assets/vendor/quill/quill.snow.css') }}" rel="stylesheet">
-  <link href="{{ url_for('static',filename='assets/vendor/quill/quill.bubble.css') }}" rel="stylesheet">
-  <link href="{{ url_for('static',filename='assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
-  <link href="{{ url_for('static',filename='assets/vendor/simple-datatables/style.css') }}" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="{{ url_for('static',filename='assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='assets/vendor/quill/quill.snow.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='assets/vendor/quill/quill.bubble.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='assets/vendor/simple-datatables/style.css') }}" rel="stylesheet">
 
-  <!-- Template Main CSS File -->
-  <link href="{{ url_for('static',filename='assets/css/style.css') }}" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="{{ url_for('static',filename='assets/css/style.css') }}" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: NiceAdmin - v2.4.0
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    <!-- =======================================================
+    * Template Name: NiceAdmin - v2.4.0
+    * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
 </head>
 
 <body>
@@ -113,7 +114,6 @@
         </nav><!-- End Icons Navigation -->
 
     </header><!-- End Header -->
-
     <!-- ======= Sidebar ======= -->
     <aside id="sidebar" class="sidebar">
 
@@ -350,69 +350,58 @@
         </ul>
 
     </aside><!-- End Sidebar-->
-   
     <!-- ======= Main ======= -->
     <main id="main" class="main">
 
-        <h5 class="card-title">Add Employee</h5>
+        <div class="card">
+            <div class="card-body">
 
-        <!-- General Form Elements -->
-        <form action="/addemp"  autocomplete="on" method="POST" enctype="multipart/form-data">
-            <div class="row mb-3">
-                <label for="inputText" class="col-sm-2 col-form-label">Employee ID</label>
-                <div class="col-sm-10">
-                    <input type="text" name="emp_id" class="form-control">
-                </div>
-            </div>
-            <div class="row mb-3">
-                <label for="inputEmail" class="col-sm-2 col-form-label">First Name</label>
-                <div class="col-sm-10">
-                    <input type="text" name="first_name" class="form-control">
-                </div>
-            </div>
-            <div class="row mb-3">
-                <label for="inputPassword" class="col-sm-2 col-form-label">Last Name</label>
-                <div class="col-sm-10">
-                    <input type="text" name="last_name" class="form-control">
-                </div>
-            </div>
-            <div class="row mb-3">
-                <label for="inputNumber" class="col-sm-2 col-form-label">Primary Skills</label>
-                <div class="col-sm-10">
-                    <input type="text" name="pri_skill" class="form-control">
-                </div>
-            </div>
-            <div class="row mb-3">
-                <label for="inputNumber" class="col-sm-2 col-form-label">Location</label>
-                <div class="col-sm-10">
-                    <input type="text" name="location" class="form-control">
-                </div>
-            </div>
-            <div class="row mb-3">
-                <label for="inputNumber" class="col-sm-2 col-form-label">Salary Rate</label>
-                <div class="col-sm-10">
-                    <input type="number" name="salary_rate" class="form-control">
-                </div>
-            </div>
-            <div class="row mb-3">
-                <label for="inputNumber" class="col-sm-2 col-form-label">Profile picture</label>
-                <div class="col-sm-10">
-                    <input class="form-control" name="emp_image_file" type="file" accept="image/png, image/jpg, image/jpeg" id="formFile">
-                </div>
-            </div>            
-            <div class="row mb-3">
-                <label class="col-sm-2 col-form-label"></label>
-                <div class="col-sm-10">
-                    <button type="submit" class="btn btn-primary">Submit Form</button>
-                </div>
-            </div>
+                <h2>Select a file to upload</h2>
 
-        </form><!-- End General Form Elements -->
 
-        
+
+                <form method="POST" action="/uploadfile" enctype="multipart/form-data">
+                    <input class="col-sm-2 col-form-label" type="hidden" name="emp_id" value={{data[0]}}>
+                    <dl>
+                        <p>
+                            <input type=file name="emp_important_file" class="form-control" autocomplete="off" required>
+                        </p>
+                    </dl>
+                    <p>
+                        <input type="submit" value="Submit" class="btn btn-info">
+                    </p>
+                </form>
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">File</th>
+                            <th scope="col">User ID</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in data2 %}
+
+                        <tr>
+                            <td>
+                                <a href='https://{{bucket}}.s3.amazonaws.com/{{row[0]}}' style="cursor:pointer">
+                                    {{row[0]}}
+                                </a>
+                            </td>
+                            <td>{{row[1]}}</td>
+
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+                <p>{{noFile}}</p>
+
+            </div>
+        </div>
 
     </main><!-- End #main -->
-
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
         <div class="copyright">

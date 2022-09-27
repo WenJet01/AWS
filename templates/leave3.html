@@ -1,40 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- view leave -->
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Dashboard - NiceAdmin Bootstrap Template</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+    <title>Dashboard - NiceAdmin Bootstrap Template</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
 
-  <!-- Favicons -->
-  <link href="{{ url_for('static',filename='assets/img/favicon.png') }}" rel="icon">
-  <link href="{{ url_for('static',filename='assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+    <!-- Favicons -->
+    <link href="{{ url_for('static',filename='assets/img/favicon.png') }}" rel="icon">
+    <link href="{{ url_for('static',filename='assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
-  <link href="{{ url_for('static',filename='assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-  <link href="{{ url_for('static',filename='assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-  <link href="{{ url_for('static',filename='assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
-  <link href="{{ url_for('static',filename='assets/vendor/quill/quill.snow.css') }}" rel="stylesheet">
-  <link href="{{ url_for('static',filename='assets/vendor/quill/quill.bubble.css') }}" rel="stylesheet">
-  <link href="{{ url_for('static',filename='assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
-  <link href="{{ url_for('static',filename='assets/vendor/simple-datatables/style.css') }}" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="{{ url_for('static',filename='assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='assets/vendor/quill/quill.snow.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='assets/vendor/quill/quill.bubble.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='assets/vendor/simple-datatables/style.css') }}" rel="stylesheet">
 
-  <!-- Template Main CSS File -->
-  <link href="{{ url_for('static',filename='assets/css/style.css') }}" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="{{ url_for('static',filename='assets/css/style.css') }}" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: NiceAdmin - v2.4.0
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    <!-- =======================================================
+    * Template Name: NiceAdmin - v2.4.0
+    * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
 </head>
 
 <body>
@@ -352,26 +353,38 @@
     <!-- ======= Main ======= -->
     <main id="main" class="main">
 
-        <div class="card">
+        <div class="card" style="width:50% ; margin:auto">
             <div class="card-body">
+                <h5 class="card-title">Leave Form</h5>
 
-                <h2>Select a file to upload</h2>
-                <form method="post" action="/" enctype="multipart/form-data">
-                    <dl>
-                        <p>
-                            <input type="file" name="file" class="form-control" autocomplete="off" required>
-                        </p>
-                    </dl>
-                    <p>
-                        <input type="submit" value="Submit" class="btn btn-info">
-                    </p>
-                </form>
+                <!-- Vertical Form -->
+                <form method="POST" class="row g-3" enctype="multipart/form-data">
+                    <div class="col-12">
+                        <label class="col-lg-3 col-md-4 label ">Leave ID</label>
+                        <input readonly="readonly" name="appLeave_id" class="col-lg-9 col-md-8" type="hidden" value="{{data[0]}}">{{data[0]}}</input>
+                    </div>
+                    <div class="col-12">
+                        <label class="col-lg-3 col-md-4 label ">Date</label>
+                        <a>{{data[1]}}</a>
+                    </div>
+                    <div class="col-12">
+                        <label class="col-lg-3 col-md-4 label ">Reason</label>
+                        <a>{{data[2]}}</a>
+                    </div>
+                    <div class="col-12">
+                        <label class="col-lg-3 col-md-4 label ">Status</label>
+                        <a>{{data[3]}}</a>
+                    </div>
+                    <div class="col-12">
+                        <label class="col-lg-3 col-md-4 label ">Employee ID</label>
+                        <a name="emp_id">{{data[4]}}</a>
+                    </div>
+                </form><!-- Vertical Form -->
 
             </div>
         </div>
 
-</main><!-- End #main -->
-
+    </main><!-- End #main -->
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
         <div class="copyright">
