@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- list all employee document -->
+<!-- view employee document -->
 
 <head>
     <meta charset="utf-8">
@@ -355,42 +355,48 @@
 
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">All Employees</h5>
 
-                <!-- Table with hoverable rows -->
+                <h2>Select a file to upload</h2>
+
+
+
+                <form method="POST" action="/uploadfile" enctype="multipart/form-data">
+                    <input class="col-sm-2 col-form-label" type="hidden" name="emp_id" value={{data[0]}}>
+                    <dl>
+                        <p>
+                            <input type=file name="emp_important_file" class="form-control" autocomplete="off" required>
+                        </p>
+                    </dl>
+                    <p>
+                        <input type="submit" value="Submit" class="btn btn-info">
+                    </p>
+                </form>
+
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">First Name</th>
-                            <th scope="col">Last Name</th>
-                            <th scope="col"></th>
+                            <th scope="col">File</th>
+                            <th scope="col">User ID</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {% for row in data %}
+                        {% for row in data2 %}
 
                         <tr>
-                            <td>{{row[0]}}</td>
-                            <td>{{row[1]}}</td>
-                            <td>{{row[2]}}</td>
                             <td>
-                                <form action="/important2" method="POST">
-                                    <button formtarget="_blank"
-                                            name="input" type="submit"
-                                            formaction="/important2"
-                                            value={{row[0]}}>
-                                        view file
-                                    </button>
-                                </form>
+                                <a href='https://{{bucket}}.s3.amazonaws.com/{{row[0]}}' style="cursor:pointer">
+                                    {{row[0]}}
+                                </a>
                             </td>
+                            <td>{{row[1]}}</td>
+
                         </tr>
 
                         {% endfor %}
 
                     </tbody>
                 </table>
-                <!-- End Table with hoverable rows -->
+                <p>{{noFile}}</p>
 
             </div>
         </div>

@@ -1,41 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- list all employee document -->
 
 <head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Dashboard - NiceAdmin Bootstrap Template</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
+  <title>Dashboard - NiceAdmin Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
 
-    <!-- Favicons -->
-    <link href="{{ url_for('static',filename='assets/img/favicon.png') }}" rel="icon">
-    <link href="{{ url_for('static',filename='assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+  <!-- Favicons -->
+  <link href="{{ url_for('static',filename='assets/img/favicon.png') }}" rel="icon">
+  <link href="{{ url_for('static',filename='assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.gstatic.com" rel="preconnect">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-    <!-- Vendor CSS Files -->
-    <link href="{{ url_for('static',filename='assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static',filename='assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static',filename='assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static',filename='assets/vendor/quill/quill.snow.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static',filename='assets/vendor/quill/quill.bubble.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static',filename='assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static',filename='assets/vendor/simple-datatables/style.css') }}" rel="stylesheet">
+  <!-- Vendor CSS Files -->
+  <link href="{{ url_for('static',filename='assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static',filename='assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static',filename='assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static',filename='assets/vendor/quill/quill.snow.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static',filename='assets/vendor/quill/quill.bubble.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static',filename='assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static',filename='assets/vendor/simple-datatables/style.css') }}" rel="stylesheet">
 
-    <!-- Template Main CSS File -->
-    <link href="{{ url_for('static',filename='assets/css/style.css') }}" rel="stylesheet">
+  <!-- Template Main CSS File -->
+  <link href="{{ url_for('static',filename='assets/css/style.css') }}" rel="stylesheet">
 
-    <!-- =======================================================
-    * Template Name: NiceAdmin - v2.4.0
-    * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-    * Author: BootstrapMade.com
-    * License: https://bootstrapmade.com/license/
-    ======================================================== -->
+  <!-- =======================================================
+  * Template Name: NiceAdmin - v2.4.0
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
 </head>
 
 <body>
@@ -350,52 +349,107 @@
         </ul>
 
     </aside><!-- End Sidebar-->
+
     <!-- ======= Main ======= -->
     <main id="main" class="main">
 
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">All Employees</h5>
+                <h5 class="card-title">All training sessions</h5>
 
-                <!-- Table with hoverable rows -->
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">First Name</th>
-                            <th scope="col">Last Name</th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for row in data %}
+                <!-- Default Tabs -->
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="train-tab" data-bs-toggle="tab" data-bs-target="#train" type="button" role="tab" aria-controls="train" aria-selected="true">All training sessions</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="employee-tab" data-bs-toggle="tab" data-bs-target="#employee" type="button" role="tab" aria-controls="employee" aria-selected="false">Employee</button>
+                    </li>
+                </ul>
 
-                        <tr>
-                            <td>{{row[0]}}</td>
-                            <td>{{row[1]}}</td>
-                            <td>{{row[2]}}</td>
-                            <td>
-                                <form action="/important2" method="POST">
-                                    <button formtarget="_blank"
-                                            name="input" type="submit"
-                                            formaction="/important2"
-                                            value={{row[0]}}>
-                                        view file
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
+                <div class="tab-content pt-2" id="myTabContent">
+                    <div class="tab-pane fade show active" id="train" role="tabpanel" aria-labelledby="train-tab">
+                        <!-- Table with hoverable rows -->
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Training ID</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Location</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for row in data %}
 
-                        {% endfor %}
+                                <tr>
+                                    <td>{{row[0]}}</td>
+                                    <td>{{row[1]}}</td>
+                                    <td>{{row[2]}}</td>
+                                    <td>{{row[3]}}</td>
+                                    <td>
+                                        <form action="/training2" method="POST">
+                                            <button formtarget="_blank"
+                                                    name="input" type="submit"
+                                                    formaction="/training2"
+                                                    value={{row[0]}}>
+                                                Join
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
 
-                    </tbody>
-                </table>
-                <!-- End Table with hoverable rows -->
+                                {% endfor %}
 
+                            </tbody>
+                        </table>
+                        <!-- End Table with hoverable rows -->
+                    </div>
+
+                    <div class="tab-pane fade" id="employee" role="tabpanel" aria-labelledby="employee-tab">
+                        <!-- Table with hoverable rows -->
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Employee ID</th>
+                                    <th scope="col">Training Session</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for row in data2 %}
+
+                                <tr>
+                                    <td>{{row[0]}}</td>
+                                    <td>{{row[6]}}</td>
+                                    <td>
+                                        <form action="/exitTraining" method="POST">
+                                            <button formtarget="_blank"
+                                                    name="input" type="submit"
+                                                    formaction="/exitTraining"
+                                                    value={{row[0]}}>
+                                                Exit
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+
+                                {% endfor %}
+
+                            </tbody>
+                        </table>
+                        <!-- End Table with hoverable rows -->
+                    </div>
+                </div>
+
+                    
+
+                </div>
             </div>
-        </div>
 
     </main><!-- End #main -->
+
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
         <div class="copyright">

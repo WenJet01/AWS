@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- list all employee document -->
+<!-- List all leave -->
 
 <head>
     <meta charset="utf-8">
@@ -355,42 +355,137 @@
 
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">All Employees</h5>
+                <h5 class="card-title">Pending Leave Requests</h5>
 
-                <!-- Table with hoverable rows -->
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">First Name</th>
-                            <th scope="col">Last Name</th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for row in data %}
+                <!-- Default Tabs -->
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="pending-tab" data-bs-toggle="tab" data-bs-target="#pending" type="button" role="tab" aria-controls="pending" aria-selected="true">Pending</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="accept-tab" data-bs-toggle="tab" data-bs-target="#accept" type="button" role="tab" aria-controls="accept" aria-selected="false">Accept</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="reject-tab" data-bs-toggle="tab" data-bs-target="#reject" type="button" role="tab" aria-controls="reject" aria-selected="false">Reject</button>
+                    </li>
+                </ul>
 
-                        <tr>
-                            <td>{{row[0]}}</td>
-                            <td>{{row[1]}}</td>
-                            <td>{{row[2]}}</td>
-                            <td>
-                                <form action="/important2" method="POST">
-                                    <button formtarget="_blank"
-                                            name="input" type="submit"
-                                            formaction="/important2"
-                                            value={{row[0]}}>
-                                        view file
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
+                <div class="tab-content pt-2" id="myTabContent">
+                    <div class="tab-pane fade show active" id="pending" role="tabpanel" aria-labelledby="pending-tab">
+                        <!-- Table with hoverable rows -->
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Leave ID</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Reason</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for row in data %}
 
-                        {% endfor %}
+                                <tr>
+                                    <td>{{row[0]}}</td>
+                                    <td>{{row[1]}}</td>
+                                    <td>{{row[2]}}</td>
+                                    <td>
+                                        <form action="/leave2" method="POST">
+                                            <button formtarget="_blank"
+                                                    name="input" type="submit"
+                                                    formaction="/leave2"
+                                                    value={{row[0]}}>
+                                                Respond
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
 
-                    </tbody>
-                </table>
-                <!-- End Table with hoverable rows -->
+                                {% endfor %}
+
+                            </tbody>
+                        </table>
+                        <!-- End Table with hoverable rows -->
+                    </div>
+
+                    <div class="tab-pane fade" id="accept" role="tabpanel" aria-labelledby="accept-tab">
+                        <!-- Table with hoverable rows -->
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Leave ID</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Reason</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for row in data2 %}
+
+                                <tr>
+                                    <td>{{row[0]}}</td>
+                                    <td>{{row[1]}}</td>
+                                    <td>{{row[2]}}</td>
+                                    <td>
+                                        <form action="/leave2" method="POST">
+                                            <button formtarget="_blank"
+                                                    name="input" type="submit"
+                                                    formaction="/leave3"
+                                                    value={{row[0]}}>
+                                                View
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+
+                                {% endfor %}
+
+                            </tbody>
+                        </table>
+                        <!-- End Table with hoverable rows -->
+                    </div>
+
+                    <div class="tab-pane fade" id="reject" role="tabpanel" aria-labelledby="reject-tab">
+                        <!-- Table with hoverable rows -->
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Leave ID</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Reason</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for row in data3 %}
+
+                                <tr>
+                                    <td>{{row[0]}}</td>
+                                    <td>{{row[1]}}</td>
+                                    <td>{{row[2]}}</td>
+                                    <td>
+                                        <form action="/leave2" method="POST">
+                                            <button formtarget="_blank"
+                                                    name="input" type="submit"
+                                                    formaction="/leave3"
+                                                    value={{row[0]}}>
+                                                View
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+
+                                {% endfor %}
+
+                            </tbody>
+                        </table>
+                        <!-- End Table with hoverable rows -->
+                    </div>
+
+                </div><!-- End Default Tabs -->
+
+
+
 
             </div>
         </div>
