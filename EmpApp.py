@@ -57,6 +57,13 @@ def index():
 
 @app.route("/addemp", methods=['POST'])
 def AddEmp():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb)
+    cursor = db_conn.cursor()
     today = datetime.now()
     todayDate = today.strftime("%Y-%m-%d")
     idDate = today.strftime("%y%m%d%H%M%S")
@@ -110,6 +117,13 @@ def AddEmp():
 
 @app.route('/directory', methods =['GET', 'POST'])
 def directory():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb)
+    cursor = db_conn.cursor()
     cursor.execute("SELECT * FROM employee")
     directoryData = cursor.fetchall()
     print(directoryData)
@@ -117,6 +131,13 @@ def directory():
 
 @app.route('/editProfile', methods =['GET', 'POST'])
 def editProfile():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb)
+    cursor = db_conn.cursor()
     if request.method == 'POST':
         data = request.form["input"]
         print(data)
@@ -127,7 +148,14 @@ def editProfile():
 
 @app.route('/profile', methods =['GET', 'POST'])
 def profile():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb)
     cursor = db_conn.cursor()
+    
     if request.method == 'POST':
         data = request.form["input"]
         print(data)
@@ -145,6 +173,13 @@ def profile():
 
 @app.route("/saveProfile", methods=['POST'])
 def saveProfile():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb)
+    cursor = db_conn.cursor()
     emp_id = request.form['emp_id']
     first_name = request.form['first_name']
     last_name = request.form['last_name']
@@ -196,6 +231,13 @@ def saveProfile():
 
 @app.route('/deleteProfile', methods =['GET', 'POST'])
 def deleteProfile():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb)
+    cursor = db_conn.cursor()
     if request.method == 'POST':
         data = request.form["input"]
         print(data)
@@ -204,6 +246,13 @@ def deleteProfile():
 
 @app.route('/performance', methods =['GET', 'POST'])
 def performance():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb)
+    cursor = db_conn.cursor()
     cursor.execute("SELECT * FROM performanceNote")
     directoryData = cursor.fetchall()
     print(directoryData)
@@ -211,6 +260,13 @@ def performance():
 
 @app.route('/performanceAdd', methods =['GET', 'POST'])
 def performanceAdd():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb)
+    cursor = db_conn.cursor()
     today = datetime.now()
     if request.method == 'POST':
         data = request.form["input"]
@@ -220,6 +276,13 @@ def performanceAdd():
 
 @app.route('/performanceDetail', methods =['GET', 'POST'])
 def performanceDetail():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb)
+    cursor = db_conn.cursor()
     if request.method == 'POST':
         data = request.form["input"]
         cursor.execute("SELECT * FROM performanceNote WHERE note_id = '"+data+"'")
@@ -230,6 +293,13 @@ def performanceDetail():
 
 @app.route('/performanceSave', methods =['GET', 'POST'])
 def performanceSave():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb)
+    cursor = db_conn.cursor()
     today = datetime.now()
     todayDate = today.strftime("%Y-%m-%d")
     idDate = today.strftime("%y%m%d%H%M%S")
@@ -251,6 +321,13 @@ def performanceSave():
 
 @app.route('/performanceEditSave', methods =['GET', 'POST'])
 def performanceEditSave():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb)
+    cursor = db_conn.cursor()
     if request.method == 'POST':
         emp_id = request.form["emp_id"]
         note = request.form["note"]
@@ -269,6 +346,13 @@ def performanceEditSave():
 
 @app.route('/performanceDelete', methods =['GET', 'POST'])
 def performanceDelete():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb)
+    cursor = db_conn.cursor()
     if request.method == 'POST':
         data = request.form["input"]
         print(data)
@@ -278,6 +362,13 @@ def performanceDelete():
 # cert
 @app.route('/cert', methods =['GET', 'POST'])
 def cert():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb)
+    cursor = db_conn.cursor()
     cursor.execute("SELECT * FROM cert")
     directoryData = cursor.fetchall()
     print(directoryData)
@@ -285,6 +376,13 @@ def cert():
 
 @app.route('/certAdd', methods =['GET', 'POST'])
 def certAdd():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb)
+    cursor = db_conn.cursor()
     today = datetime.now()
     if request.method == 'POST':
         data = request.form["input"]
@@ -293,6 +391,13 @@ def certAdd():
 
 @app.route('/certDetail', methods =['GET', 'POST'])
 def certDetail():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb)
+    cursor = db_conn.cursor()
     if request.method == 'POST':
         data = request.form["input"]
         cursor.execute("SELECT * FROM cert WHERE cert_id = '"+data+"'")
@@ -302,6 +407,13 @@ def certDetail():
 
 @app.route('/certSave', methods =['GET', 'POST'])
 def certSave():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb)
+    cursor = db_conn.cursor()
     today = datetime.now()
     todayDate = today.strftime("%Y-%m-%d")
     idDate = today.strftime("%y%m%d%H%M%S")
@@ -321,6 +433,13 @@ def certSave():
 
 @app.route('/certEditSave', methods =['GET', 'POST'])
 def certEditSave():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb)
+    cursor = db_conn.cursor()
     if request.method == 'POST':
         emp_id = request.form["emp_id"]
         name = request.form["name"]
@@ -340,6 +459,13 @@ def certEditSave():
 
 @app.route('/certDelete', methods =['GET', 'POST'])
 def certDelete():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb)
+    cursor = db_conn.cursor()
     if request.method == 'POST':
         data = request.form["input"]
         print(data)
@@ -349,6 +475,13 @@ def certDelete():
 # Attendance
 @app.route('/attendance', methods =['GET', 'POST'])
 def attendance():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb)
+    cursor = db_conn.cursor()
     cursor.execute("SELECT * FROM attendance")
     directoryData = cursor.fetchall()
     print(directoryData)
@@ -356,6 +489,13 @@ def attendance():
 
 @app.route('/attendanceAdd', methods =['GET', 'POST'])
 def attendanceAdd():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb)
+    cursor = db_conn.cursor()
     today = datetime.now()
     if request.method == 'POST':
         data = request.form["input"]
@@ -364,6 +504,13 @@ def attendanceAdd():
 
 @app.route('/attendanceDetail', methods =['GET', 'POST'])
 def attendanceDetail():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb)
+    cursor = db_conn.cursor()
     if request.method == 'POST':
         data = request.form["input"]
         cursor.execute("SELECT * FROM attendance WHERE attendance_id = '"+data+"'")
@@ -373,6 +520,13 @@ def attendanceDetail():
 
 @app.route('/attendanceSave', methods =['GET', 'POST'])
 def attendanceSave():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb)
+    cursor = db_conn.cursor()
     today = datetime.now()
     todayDate = today.strftime("%Y-%m-%d")
     idDate = today.strftime("%y%m%d%H%M%S")
@@ -391,6 +545,13 @@ def attendanceSave():
 
 @app.route('/attendanceEditSave', methods =['GET', 'POST'])
 def attendanceEditSave():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb)
+    cursor = db_conn.cursor()
     if request.method == 'POST':
         emp_id = request.form["emp_id"]
         date = request.form["date"]
@@ -409,6 +570,13 @@ def attendanceEditSave():
 
 @app.route('/attendanceDelete', methods =['GET', 'POST'])
 def attendanceDelete():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb)
+    cursor = db_conn.cursor()
     if request.method == 'POST':
         data = request.form["input"]
         print(data)
@@ -417,6 +585,13 @@ def attendanceDelete():
       
 @app.route('/important1', methods =['GET', 'POST'])
 def important1():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb)
+    cursor = db_conn.cursor()
     cursor.execute("SELECT * FROM employee")
     directoryData = cursor.fetchall()
     print(directoryData)
@@ -424,6 +599,13 @@ def important1():
 
 @app.route('/important2', methods =['GET', 'POST'])
 def important2():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb)
+    cursor = db_conn.cursor()
     noFile = ""
     if request.method == 'POST':
         data = request.form["input"]
@@ -453,9 +635,16 @@ def important2():
 
 @app.route('/uploadfile', methods =['GET', 'POST'])
 def uploadfile():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb)
+    cursor = db_conn.cursor()
     emp_id = request.form['emp_id']
     emp_important_file = request.files['emp_important_file']
-    important_id = "important_file_emp-id-" + str(emp_id) + "-" + str(emp_important_file.filename)
+    important_id = "IF" + str(emp_id) + "-" + str(emp_important_file.filename)
 
     insert_sql = "INSERT INTO important VALUES (%s, %s)"
     cursor = db_conn.cursor()
@@ -465,7 +654,7 @@ def uploadfile():
         db_conn.commit()
 
         # Uplaod image file in S3 #
-        emp_important_file_name_in_s3 = "important_file_emp-id-" + str(emp_id) + "-" + str(emp_important_file.filename)
+        emp_important_file_name_in_s3 = "IF" + str(emp_id) + "-" + str(emp_important_file.filename)
         s3 = boto3.resource('s3')
 
         try:
@@ -496,6 +685,13 @@ def uploadfile():
 
 @app.route('/leave1', methods =['GET', 'POST'])
 def leave1():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb)
+    cursor = db_conn.cursor()
 
     cursor.execute("SELECT * FROM appLeave WHERE status='pending'")
     directoryData = cursor.fetchall()
@@ -515,6 +711,13 @@ def leave1():
 
 @app.route('/leave2', methods =['GET', 'POST'])
 def leave2():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb)
+    cursor = db_conn.cursor()
 
     if request.method == 'POST':
         data = request.form["input"]
@@ -527,6 +730,13 @@ def leave2():
 
 @app.route('/leave3', methods =['GET', 'POST'])
 def leave3():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb)
+    cursor = db_conn.cursor()
 
     if request.method == 'POST':
         data = request.form["input"]
@@ -540,6 +750,13 @@ def leave3():
 
 @app.route("/applyLeave", methods =['GET', 'POST'])
 def applyLeave():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb)
+    cursor = db_conn.cursor()
     appLeave_id = request.form["appLeave_id"]
     accept = "accept"
 
@@ -558,6 +775,13 @@ def applyLeave():
 
 @app.route("/rejectLeave", methods =['GET', 'POST'])
 def rejectLeave():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb)
+    cursor = db_conn.cursor()
     appLeave_id = request.form["appLeave_id"]
     reject = "reject"
 
@@ -577,6 +801,13 @@ def rejectLeave():
 
 @app.route('/training1', methods =['GET', 'POST'])
 def training1():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb)
+    cursor = db_conn.cursor()
     cursor.execute("SELECT * FROM training")
     directoryData = cursor.fetchall()
     print(directoryData)
@@ -590,6 +821,13 @@ def training1():
 
 @app.route('/training2', methods =['GET', 'POST'])
 def training2():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb)
+    cursor = db_conn.cursor()
     training_id = request.form["input"]
     cursor.execute("SELECT * FROM employee WHERE training_id IS NULL")
     directoryData = cursor.fetchall()
@@ -604,6 +842,13 @@ def training2():
 
 @app.route("/joinTraining", methods =['GET', 'POST'])
 def joinTraining():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb)
+    cursor = db_conn.cursor()
     training_id = request.form["training_id"]
     emp_id = request.form["input"]
 
@@ -623,6 +868,13 @@ def joinTraining():
 
 @app.route("/exitTraining", methods =['GET', 'POST'])
 def exitTraining():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb)
+    cursor = db_conn.cursor()
     emp_id = request.form["input"]
 
     update_sql = "UPDATE employee SET training_id = NULL WHERE emp_id = %s"
