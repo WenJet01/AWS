@@ -354,29 +354,115 @@
     <!-- ======= Main ======= -->
     <main id="main" class="main">
 
-        <form action="/addemp" autocomplete="on" method="POST" enctype="multipart/form-data">
+        <section id="gtco-welcome" class="bg-white section-padding">
+            <div class="container">
+                <div class="section-content">
+                    <div class="row">
+                        <div class="col-sm-5 img-bg d-flex shadow align-items-center justify-content-center justify-content-md-end img-2">
+                            <img class="img-fluid img-cover" src='https://{{bucket}}.s3.amazonaws.com/groupphoto.jpg' />
+                        </div>
+                        <div class="col-sm-7 py-5 pl-md-0 pl-4">
+                            <div class="heading-section pl-lg-5 ml-md-5">
+                                <span class="subheading" style="font-size: 22px;">
+                                    About
+                                </span>
+                                <h2 style="color: #4154f1;">
+                                    Welcome to Manage69
+                                </h2>
+                            </div>
+                            <div class="pl-lg-5 ml-md-5">
+                                <p>At Manage 69, we believe there is a better way to do marketing. A more valuable way where customers are earned rather than bought. We're obsessively passionate about it, and our mission is to help people achieve it. We focus on search engine optimization. It's one of the least understood and least transparent aspects of great marketing, and we see that as an opportunity. We're excited to simplify SEO for everyone through our software, education, and community.</p>
+                                <h3 class="mt-5">Member</h3>
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="thumb-menu">
+                                            <img class="img-fluid img-cover" src='https://{{bucket}}.s3.amazonaws.com/wenjet.jpg' />
+                                            <h6>Chee Wen Jet</h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="thumb-menu">
+                                            <img class="img-fluid img-cover" src='https://{{bucket}}.s3.amazonaws.com/debracool.jpg' />
+                                            <h6>Debra Ho Yan Cheng</h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="thumb-menu">
+                                            <img class="img-fluid img-cover" src='https://{{bucket}}.s3.amazonaws.com/cheong.jpg'/>
+                                            <h6>Chang Yow Lap</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End of Welcome Section -->		
+        
+        <!-- Specialties Section -->
+        <section id="gtco-special-dishes" class="bg-white section-padding">
+            <div class="container" style="margin-top: 100px;">
+                <div class="section-content">
+                    <div class="heading-section text-center">
+                        <span class="subheading">
+                            Specialties
+                        </span>
+                        <h2 class="subheading shadow">
+                            Our Team
+                        </h2>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col-lg-5 col-md-6 align-self-center py-5">
+                            <div class="dishes-text">
+                                <h3 style="color: #f34949;"><span>DEBRA</span><br>HO YAN CHENG</h3>
+                                <h5><b>Chief Executive Officer</b></h5>
+                                <p class="pt-3">A co-founder and CEO of Manager69, bringing more than seven years of executive experience 
+                                    with leading software vendors to this On-Demand/Software-as-a-Service company. Previously, Debra created and
+                                    was VP and GM of Siebel's CRM OnDemand hosted business unit. Debra was also the VP and GM of
+                                    Siebel's flagship Sales Force Automation product line and VP of Marketing for Siebel Analytics. Debra was
+                                    previously SVP of Engineering and Products for Salesforce.com; She led all product development and
+                                    product marketing functions for the company's first release of its groundbreaking, hosted CRM solution.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 offset-lg-2 col-md-6 align-self-center mt-4 mt-md-0">
+                            <img src='https://{{bucket}}.s3.amazonaws.com/debrasweet.jpeg' alt="" class="img-fluid shadow w-100">
+                        </div>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col-lg-5 col-md-6 align-self-center order-2 order-md-1 mt-4 mt-md-0">
+                            <img src='https://{{bucket}}.s3.amazonaws.com/wenjetcow.jpg' alt="" class="img-fluid shadow w-100">
+                        </div>
+                        <div class="col-lg-5 offset-lg-2 col-md-6 align-self-center order-1 order-md-2 py-5">
+                            <div class="dishes-text">
+                                <h3 style="color: #f34949;"><span>CHEE</span><br>WEN JET</h3>
+                                <h5><b>Graphic Designing Team Lead</b></h5>
+                                <p class="pt-3">An experienced Art Director and Graphic Designer with nearly 10 years of experience in the industry. 
+                                    He’s honed his branding, logo design, illustration and typography skills working with clients from photographers, 
+                                    non-profit organizations, higher education, and everything in between. Colby holds a BS in Graphic Design with a 
+                                    minor in photography from Pennsylvania College of Technology.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col-lg-5 col-md-6 align-self-center py-5">
+                            <div class="dishes-text">
+                                <h3 style="color: #f34949;"><span>CHANG</span><br>YOW LAP</h3>
+                                <h5><b>Technical Manager</b></h5>
+                                <p class="pt-3">Introduce yourself</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 offset-lg-2 col-md-6 align-self-center mt-4 mt-md-0">
+                            <img src='https://{{bucket}}.s3.amazonaws.com/cheongegg.jpg' alt="" class="img-fluid shadow w-100">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            <button type="submit" formaction="/getemp" style="background: grey; height: 45px; width: 200px; color:white; font:oblique;">GET EMPLOYEE INFORMATION</button><br><br>
-
-            Employee ID:<br> <input style="height:25px;font-size:14pt; color:grey;" type="number" name="emp_id" autofocus size="40"><br><br>
-
-            First Name:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text" name="first_name"><br><br>
-
-            Last Name:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text" name="last_name"><br><br>
-
-            Primary Skills:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text" name="pri_skill"><br><br>
-
-            Location:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text" name="location"><br><br>
-
-            Salary Rate:<br> <input style="height:25px;font-size:14pt;color:grey;" type="number" name="salary_rate"><br><br>
-
-            Image: <input type=file name="emp_image_file" style="height:25px;font-size:14pt;color:grey;"> <br><br>
-
-            <button type="submit" style="background: grey; height: 45px; width: 200px; color: white; size: 5; font:oblique;">UPDATE DATABASE</button>
-
-        </form>
-
-    </main><!-- End #main -->
+    </main>
+    <!-- End #main -->
 
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">

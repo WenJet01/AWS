@@ -354,27 +354,57 @@
     <!-- ======= Main ======= -->
     <main id="main" class="main">
 
-        <form action="/addemp" autocomplete="on" method="POST" enctype="multipart/form-data">
+        <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Edit Certificate</h5>
 
-            <button type="submit" formaction="/getemp" style="background: grey; height: 45px; width: 200px; color:white; font:oblique;">GET EMPLOYEE INFORMATION</button><br><br>
+              <!-- Horizontal Form -->
+              <form action="/certEditSave" autocomplete="on" method = "POST" enctype="multipart/form-data">
+                <div class="row mb-3" style="display: none;">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">ID</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="inputText" value="{{data[0]}}" name="id">
+                    </div>
+                  </div>
+                
+                <div class="row mb-3">
+                  <label for="inputEmail3" class="col-sm-2 col-form-label">Employee ID</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputText" value="{{data[4]}}" name="emp_id">
+                  </div>
+                </div>
 
-            Employee ID:<br> <input style="height:25px;font-size:14pt; color:grey;" type="number" name="emp_id" autofocus size="40"><br><br>
+                <div class="row mb-3">
+                    <label for="inputDate" class="col-sm-2 col-form-label">Date</label>
+                    <div class="col-sm-10">
+                      <input type="date" class="form-control" value="{{data[1]}}" name="date">
+                    </div>
+                  </div>
 
-            First Name:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text" name="first_name"><br><br>
+                  <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Certificate Name</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="inputText" value="{{data[2]}}" name="name">
+                    </div>
+                  </div>
 
-            Last Name:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text" name="last_name"><br><br>
+                  <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Given By</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="inputText" value="{{data[3]}}" name="given_by">
+                    </div>
+                  </div>
 
-            Primary Skills:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text" name="pri_skill"><br><br>
+ 
 
-            Location:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text" name="location"><br><br>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="reset" class="btn btn-secondary">Reset</button>
+                </div>
+              </form><!-- End Horizontal Form -->
 
-            Salary Rate:<br> <input style="height:25px;font-size:14pt;color:grey;" type="number" name="salary_rate"><br><br>
-
-            Image: <input type=file name="emp_image_file" style="height:25px;font-size:14pt;color:grey;"> <br><br>
-
-            <button type="submit" style="background: grey; height: 45px; width: 200px; color: white; size: 5; font:oblique;">UPDATE DATABASE</button>
-
-        </form>
+            </div>
+          </div>
 
     </main><!-- End #main -->
 

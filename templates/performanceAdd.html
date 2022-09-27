@@ -354,27 +354,35 @@
     <!-- ======= Main ======= -->
     <main id="main" class="main">
 
-        <form action="/addemp" autocomplete="on" method="POST" enctype="multipart/form-data">
+        <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Add Performance Note</h5>
 
-            <button type="submit" formaction="/getemp" style="background: grey; height: 45px; width: 200px; color:white; font:oblique;">GET EMPLOYEE INFORMATION</button><br><br>
+              <!-- Horizontal Form -->
+              <form action="/performanceSave" autocomplete="on" method = "POST" enctype="multipart/form-data">
+                <div class="row mb-3">
+                  <label for="inputEmail3" class="col-sm-2 col-form-label">Employee ID</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputText" value="{{data}}" name="emp_id">
+                  </div>
+                </div>
 
-            Employee ID:<br> <input style="height:25px;font-size:14pt; color:grey;" type="number" name="emp_id" autofocus size="40"><br><br>
+                <div class="row mb-3">
+                  <label for="inputPassword3" class="col-sm-2 col-form-label">Note</label>
+                  <div class="col-sm-10">
+                    <textarea class="form-control" style="height: 100px" name="note"></textarea>
+                  </div>
+                </div>
+ 
 
-            First Name:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text" name="first_name"><br><br>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="reset" class="btn btn-secondary">Reset</button>
+                </div>
+              </form><!-- End Horizontal Form -->
 
-            Last Name:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text" name="last_name"><br><br>
-
-            Primary Skills:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text" name="pri_skill"><br><br>
-
-            Location:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text" name="location"><br><br>
-
-            Salary Rate:<br> <input style="height:25px;font-size:14pt;color:grey;" type="number" name="salary_rate"><br><br>
-
-            Image: <input type=file name="emp_image_file" style="height:25px;font-size:14pt;color:grey;"> <br><br>
-
-            <button type="submit" style="background: grey; height: 45px; width: 200px; color: white; size: 5; font:oblique;">UPDATE DATABASE</button>
-
-        </form>
+            </div>
+          </div>
 
     </main><!-- End #main -->
 

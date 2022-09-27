@@ -354,27 +354,15 @@
     <!-- ======= Main ======= -->
     <main id="main" class="main">
 
-        <form action="/addemp" autocomplete="on" method="POST" enctype="multipart/form-data">
-
-            <button type="submit" formaction="/getemp" style="background: grey; height: 45px; width: 200px; color:white; font:oblique;">GET EMPLOYEE INFORMATION</button><br><br>
-
-            Employee ID:<br> <input style="height:25px;font-size:14pt; color:grey;" type="number" name="emp_id" autofocus size="40"><br><br>
-
-            First Name:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text" name="first_name"><br><br>
-
-            Last Name:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text" name="last_name"><br><br>
-
-            Primary Skills:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text" name="pri_skill"><br><br>
-
-            Location:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text" name="location"><br><br>
-
-            Salary Rate:<br> <input style="height:25px;font-size:14pt;color:grey;" type="number" name="salary_rate"><br><br>
-
-            Image: <input type=file name="emp_image_file" style="height:25px;font-size:14pt;color:grey;"> <br><br>
-
-            <button type="submit" style="background: grey; height: 45px; width: 200px; color: white; size: 5; font:oblique;">UPDATE DATABASE</button>
-
-        </form>
+        <!-- Special title treatmen -->
+        <div class="card text-center">
+            
+            <div class="card-body">
+              <h5 class="card-title">Success!</h5>
+              <p class="card-text">Everything is working normally.</p>
+              <a class="btn btn-primary" onclick="window.open('', '_self', ''); window.close();">Close this tab</a>
+            </div>
+          </div><!-- End Special title treatmen -->
 
     </main><!-- End #main -->
 
