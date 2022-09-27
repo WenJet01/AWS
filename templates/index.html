@@ -354,27 +354,62 @@
     <!-- ======= Main ======= -->
     <main id="main" class="main">
 
-        <form action="/addemp" autocomplete="on" method="POST" enctype="multipart/form-data">
+        <h5 class="card-title">Add Employee</h5>
 
-            <button type="submit" formaction="/getemp" style="background: grey; height: 45px; width: 200px; color:white; font:oblique;">GET EMPLOYEE INFORMATION</button><br><br>
+        <!-- General Form Elements -->
+        <form action="/addemp"  autocomplete="on" method="POST" enctype="multipart/form-data">
+            <div class="row mb-3">
+                <label for="inputText" class="col-sm-2 col-form-label">Employee ID</label>
+                <div class="col-sm-10">
+                    <input type="text" name="emp_id" class="form-control">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputEmail" class="col-sm-2 col-form-label">First Name</label>
+                <div class="col-sm-10">
+                    <input type="text" name="first_name" class="form-control">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Last Name</label>
+                <div class="col-sm-10">
+                    <input type="text" name="last_name" class="form-control">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputNumber" class="col-sm-2 col-form-label">Primary Skills</label>
+                <div class="col-sm-10">
+                    <input type="text" name="pri_skill" class="form-control">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputNumber" class="col-sm-2 col-form-label">Location</label>
+                <div class="col-sm-10">
+                    <input type="text" name="location" class="form-control">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputNumber" class="col-sm-2 col-form-label">Salary Rate</label>
+                <div class="col-sm-10">
+                    <input type="number" name="salary_rate" class="form-control">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputNumber" class="col-sm-2 col-form-label">Profile picture</label>
+                <div class="col-sm-10">
+                    <input class="form-control" name="emp_image_file" type="file" accept="image/png, image/jpg, image/jpeg" id="formFile">
+                </div>
+            </div>            
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <button type="submit" class="btn btn-primary">Submit Form</button>
+                </div>
+            </div>
 
-            Employee ID:<br> <input style="height:25px;font-size:14pt; color:grey;" type="number" name="emp_id" autofocus size="40"><br><br>
+        </form><!-- End General Form Elements -->
 
-            First Name:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text" name="first_name"><br><br>
-
-            Last Name:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text" name="last_name"><br><br>
-
-            Primary Skills:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text" name="pri_skill"><br><br>
-
-            Location:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text" name="location"><br><br>
-
-            Salary Rate:<br> <input style="height:25px;font-size:14pt;color:grey;" type="number" name="salary_rate"><br><br>
-
-            Image: <input type=file name="emp_image_file" style="height:25px;font-size:14pt;color:grey;"> <br><br>
-
-            <button type="submit" style="background: grey; height: 45px; width: 200px; color: white; size: 5; font:oblique;">UPDATE DATABASE</button>
-
-        </form>
+        
 
     </main><!-- End #main -->
 

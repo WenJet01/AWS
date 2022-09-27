@@ -32,6 +32,7 @@ cursor = db_conn.cursor()
 def home():
     return render_template('index.html')
 
+
 @app.route("/portfolio", methods=['GET', 'POST'])
 def portfolio():
     return render_template('portfolio.html', bucket=bucket)
@@ -41,6 +42,10 @@ def portfolio():
 def about():
     return render_template('www.intellipaat.com')
 
+    
+@app.route("/index", methods=['GET', 'POST'])
+def index():
+    return render_template('index.html')
 
 @app.route("/addemp", methods=['POST'])
 def AddEmp():
@@ -228,7 +233,7 @@ def performanceSave():
         cursor.execute(update_sql, (id,date,note,emp_id))
         db_conn.commit()
 
-        return render_template('success.html', data = id )
+        return render_template('success.html', data = id , bucket = bucket)
 
 @app.route('/performanceEditSave', methods =['GET', 'POST'])
 def performanceEditSave():
@@ -246,7 +251,7 @@ def performanceEditSave():
         cursor.execute(update_sql, (date,note,emp_id,id))
         db_conn.commit()
 
-        return render_template('success.html',data = id )
+        return render_template('success.html',data = id , bucket = bucket)
 
 # cert
 @app.route('/cert', methods =['GET', 'POST'])
@@ -290,7 +295,7 @@ def certSave():
         cursor.execute(update_sql, (id,date,name,given_by,emp_id))
         db_conn.commit()
 
-        return render_template('success.html', data = id )
+        return render_template('success.html', data = id , bucket = bucket)
 
 @app.route('/certEditSave', methods =['GET', 'POST'])
 def certEditSave():
@@ -309,7 +314,7 @@ def certEditSave():
         cursor.execute(update_sql, (date,name,given_by,emp_id,id))
         db_conn.commit()
 
-        return render_template('success.html',data = id )
+        return render_template('success.html',data = id , bucket = bucket)
       
 
       
@@ -390,7 +395,7 @@ def uploadfile():
 
     print("all modification done...")
 
-    return render_template('success.html', data = directoryData)
+    return render_template('success.html', data = directoryData, bucket = bucket)
 
 @app.route('/leave1', methods =['GET', 'POST'])
 def leave1():
@@ -452,7 +457,7 @@ def applyLeave():
         cursor.execute("SELECT * FROM appLeave")
         directoryData = cursor.fetchall()
     
-    return render_template('success.html', data = directoryData)
+    return render_template('success.html', data = directoryData, bucket = bucket)
 
 @app.route("/rejectLeave", methods =['GET', 'POST'])
 def rejectLeave():
@@ -470,7 +475,7 @@ def rejectLeave():
         cursor.execute("SELECT * FROM appLeave")
         directoryData = cursor.fetchall()
     
-    return render_template('success.html', data = directoryData)
+    return render_template('success.html', data = directoryData, bucket = bucket)
 
 
 @app.route('/training1', methods =['GET', 'POST'])
@@ -516,7 +521,7 @@ def joinTraining():
         cursor.execute("SELECT * FROM training")
         directoryData = cursor.fetchall()
     
-    return render_template('success.html', data = directoryData)
+    return render_template('success.html', data = directoryData, bucket = bucket)
 
 
 @app.route("/exitTraining", methods =['GET', 'POST'])
@@ -533,8 +538,8 @@ def exitTraining():
     finally:
         cursor.execute("SELECT * FROM training")
         directoryData = cursor.fetchall()
-    
-    return render_template('success.html', data = directoryData)
+            
+    return render_template('success.html', data = directoryData, bucket = bucket)
 
 
 if __name__ == '__main__':
