@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- list all employee document -->
+<!-- respond leave -->
 
 <head>
     <meta charset="utf-8">
@@ -353,44 +353,39 @@
     <!-- ======= Main ======= -->
     <main id="main" class="main">
 
-        <div class="card">
+        <div class="card" style="width:50% ; margin:auto">
             <div class="card-body">
-                <h5 class="card-title">All Employees</h5>
+                <h5 class="card-title">Leave Form</h5>
 
-                <!-- Table with hoverable rows -->
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">First Name</th>
-                            <th scope="col">Last Name</th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for row in data %}
+                <!-- Vertical Form -->
+                <form method="POST" class="row g-3" enctype="multipart/form-data">
+                    <div class="col-12">
+                        <label class="col-lg-3 col-md-4 label ">Leave ID</label>
+                        <input readonly="readonly" name="appLeave_id" class="col-lg-9 col-md-8" type="hidden" value="{{data[0]}}">{{data[0]}}</input>
+                    </div>
+                    <div class="col-12">
+                        <label class="col-lg-3 col-md-4 label ">Date</label>
+                        <a>{{data[1]}}</a>
+                    </div>
+                    <div class="col-12">
+                        <label class="col-lg-3 col-md-4 label ">Reason</label>
+                        <a>{{data[2]}}</a>
+                    </div>
+                    <div class="col-12">
+                        <label class="col-lg-3 col-md-4 label ">Status</label>
+                        <a>{{data[3]}}</a>
+                    </div>
+                    <div class="col-12">
+                        <label class="col-lg-3 col-md-4 label ">Employee ID</label>
+                        <a name="emp_id">{{data[4]}}</a>
+                    </div>
+                    <div class="text-center">
 
-                        <tr>
-                            <td>{{row[0]}}</td>
-                            <td>{{row[1]}}</td>
-                            <td>{{row[2]}}</td>
-                            <td>
-                                <form action="/important2" method="POST">
-                                    <button formtarget="_blank"
-                                            name="input" type="submit"
-                                            formaction="/important2"
-                                            value={{row[0]}}>
-                                        view file
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
+                        <button formaction="/applyLeave" class="btn btn-primary">Accept</button>
 
-                        {% endfor %}
-
-                    </tbody>
-                </table>
-                <!-- End Table with hoverable rows -->
+                        <button formaction="/rejectLeave" class="btn btn-secondary">Reject</button>
+                    </div>
+                </form><!-- Vertical Form -->
 
             </div>
         </div>
