@@ -362,8 +362,7 @@
                     <h5 class="card-title">Training Details</h5>
 
                     <div class="col-12">
-                        <label class="col-lg-3 col-md-4 label " style="font-weight: bolder;">Training ID</label>
-                        <input class="col-sm-2 col-form-label" type="hidden" name="training_id" value={{data2[0]}}>
+                        <input readonly="readonly" name="training_id" class="col-lg-9 col-md-8" type="hidden" value="{{data2[0]}}">{{data2[0]}}</input>
                         <a>{{data2[0]}}</a>
                     </div>
 
@@ -408,7 +407,7 @@
                                 <td>{{row[1]}}</td>
                                 <td>
                                     <form action="/joinTraining" method="POST">
-                                        <button formtarget="_blank"
+                                        <button 
                                                 name="input" type="submit"
                                                 formaction="/joinTraining"
                                                 value={{row[0]}}>
