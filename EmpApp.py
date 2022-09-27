@@ -316,7 +316,74 @@ def certEditSave():
 
         return render_template('success.html',data = id , bucket = bucket)
       
+# Attendance
+@app.route('/attendance', methods =['GET', 'POST'])
+def attendance():
+    cursor.execute("SELECT * FROM attendance")
+    directoryData = cursor.fetchall()
+    print(directoryData)
+    return render_template('attendanceList.html', data = directoryData)
 
+@app.route('/attendanceAdd', methods =['GET', 'POST'])
+def attendanceAdd():
+    today = datetime.now()
+    if request.method == 'POST':
+        data = request.form["input"]
+        print(data)
+        return render_template('attendanceAdd.html', data = data)
+
+@app.route('/attendanceDetail', methods =['GET', 'POST'])
+def attendanceDetail():
+    if request.method == 'POST':
+        data = request.form["input"]
+        cursor.execute("SELECT * FROM attendance WHERE attendance_id = '"+data+"'")
+        directoryData = cursor.fetchone()
+        print(directoryData)
+        return render_template('attendanceDetail.html', data = directoryData)
+
+@app.route('/attendanceSave', methods =['GET', 'POST'])
+def attendanceSave():
+    today = datetime.now()
+    todayDate = today.strftime("%Y-%m-%d")
+    idDate = today.strftime("%y%m%d%H%M%S")
+    if request.method == 'POST':
+        emp_id = request.form["emp_id"]
+        date = request.form["date"]
+        note = request.form["note"]
+        id= str("AT" + idDate)
+        
+        update_sql = "INSERT INTO attendance VALUES (%s, %s, %s, %s)"
+
+        cursor.execute(update_sql, (id,date,note,emp_id))
+        db_conn.commit()
+
+        return render_template('success.html', data = id, bucket=bucket )
+
+@app.route('/attendanceEditSave', methods =['GET', 'POST'])
+def attendanceEditSave():
+    if request.method == 'POST':
+        emp_id = request.form["emp_id"]
+        date = request.form["date"]
+        note = request.form["note"]
+        id= request.form["id"]
+        print(id)
+        print(note)
+        print(date)
+        print(emp_id)
+        update_sql = "UPDATE attendance SET date = %s, note = %s, emp_id = %s WHERE attendance_id = %s"
+
+        cursor.execute(update_sql, (date,note,emp_id,id))
+        db_conn.commit()
+
+        return render_template('success.html',data = id, bucket=bucket)
+
+@app.route('/attendanceDelete', methods =['GET', 'POST'])
+def attendanceDelete():
+    if request.method == 'POST':
+        data = request.form["input"]
+        print(data)
+        cursor.execute("DELETE FROM attendance WHERE attendance_id='"+data+"'")
+        return render_template('success.html', bucket=bucket)
       
 @app.route('/important1', methods =['GET', 'POST'])
 def important1():
