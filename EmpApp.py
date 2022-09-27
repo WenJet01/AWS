@@ -24,14 +24,22 @@ db_conn = connections.Connection(
     db=customdb
 
 )
-output = {}
-table = 'employee'
 cursor = db_conn.cursor()
 
-@app.route("/", methods=['GET', 'POST'])
-def home():
-    return render_template('index.html')
+output = {}
+table = 'employee'
 
+@app.route("/", methods=['GET', 'POST'])
+def main():
+    return render_template('dashboard.html')
+
+@app.route("/home", methods=['GET', 'POST'])
+def home():
+    return render_template('dashboard.html')
+
+@app.route("/addEmployee", methods=['GET', 'POST'])
+def addEmployee():
+    return render_template('index.html')
 
 @app.route("/portfolio", methods=['GET', 'POST'])
 def portfolio():
@@ -49,7 +57,10 @@ def index():
 
 @app.route("/addemp", methods=['POST'])
 def AddEmp():
-    emp_id = request.form['emp_id']
+    today = datetime.now()
+    todayDate = today.strftime("%Y-%m-%d")
+    idDate = today.strftime("%y%m%d%H%M%S")
+    emp_id = str("E" + idDate)
     first_name = request.form['first_name']
     last_name = request.form['last_name']
     pri_skill = request.form['pri_skill']
@@ -95,7 +106,7 @@ def AddEmp():
         cursor.close()
 
     print("all modification done...")
-    return render_template('AddEmpOutput.html', name=emp_name)
+    return render_template('success.html', bucket = bucket)
 
 @app.route('/directory', methods =['GET', 'POST'])
 def directory():
@@ -109,25 +120,28 @@ def editProfile():
     if request.method == 'POST':
         data = request.form["input"]
         print(data)
-        cursor.execute("SELECT * FROM employee WHERE emp_id="+data)
+        cursor.execute("SELECT * FROM employee WHERE emp_id= '"+data+"'")
         directoryData = cursor.fetchone()
         print(directoryData)
         return render_template('editProfile.html', data = directoryData)
 
 @app.route('/profile', methods =['GET', 'POST'])
 def profile():
+    cursor = db_conn.cursor()
     if request.method == 'POST':
         data = request.form["input"]
         print(data)
-        cursor.execute("SELECT * FROM employee WHERE emp_id="+data)
+        cursor.execute("SELECT * FROM employee WHERE emp_id= '"+data+"'")
         directoryData = cursor.fetchone()
-        cursor.execute("SELECT * FROM performanceNote WHERE emp_id="+data)
+        cursor.execute("SELECT * FROM performanceNote WHERE emp_id= '"+data+"'")
         performanceData = cursor.fetchall()
-        cursor.execute("SELECT * FROM cert WHERE emp_id="+data)
+        cursor.execute("SELECT * FROM cert WHERE emp_id= '"+data+"'")
         certData = cursor.fetchall()
+        cursor.execute("SELECT * FROM payroll WHERE emp_id= '"+data+"'")
+        payrollData = cursor.fetchall()
         print(directoryData)
         print(performanceData)
-        return render_template('profile.html', data = directoryData, bucket=bucket, performance = performanceData, cert = certData)
+        return render_template('profile.html', data = directoryData, bucket=bucket, performance = performanceData, cert = certData, payroll = payrollData)
 
 @app.route("/saveProfile", methods=['POST'])
 def saveProfile():
@@ -174,19 +188,19 @@ def saveProfile():
             return str(e)
 
     finally:
-        cursor.execute("SELECT * FROM employee WHERE emp_id="+emp_id)
+        cursor.execute("SELECT * FROM employee WHERE emp_id= '"+emp_id+"'")
         directoryData = cursor.fetchone()
 
     print("all modification done...")
-    return render_template('profile.html', data = directoryData)
+    return render_template('success.html', bucket = bucket)
 
 @app.route('/deleteProfile', methods =['GET', 'POST'])
 def deleteProfile():
     if request.method == 'POST':
         data = request.form["input"]
         print(data)
-        cursor.execute("DELETE FROM employee WHERE emp_id="+data)
-        return render_template('deletedProfile.html', data = data)
+        cursor.execute("DELETE FROM employee WHERE emp_id= '"+data+"'")
+        return render_template('success.html', bucket = bucket)
 
 @app.route('/performance', methods =['GET', 'POST'])
 def performance():
@@ -233,7 +247,7 @@ def performanceSave():
         cursor.execute(update_sql, (id,date,note,emp_id))
         db_conn.commit()
 
-        return render_template('success.html', data = id , bucket = bucket)
+        return render_template('success.html', bucket = bucket )
 
 @app.route('/performanceEditSave', methods =['GET', 'POST'])
 def performanceEditSave():
@@ -251,7 +265,15 @@ def performanceEditSave():
         cursor.execute(update_sql, (date,note,emp_id,id))
         db_conn.commit()
 
-        return render_template('success.html',data = id , bucket = bucket)
+        return render_template('success.html',bucket = bucket )
+
+@app.route('/performanceDelete', methods =['GET', 'POST'])
+def performanceDelete():
+    if request.method == 'POST':
+        data = request.form["input"]
+        print(data)
+        cursor.execute("DELETE FROM performanceNote WHERE note_id='"+data+"'")
+        return render_template('success.html', bucket = bucket)
 
 # cert
 @app.route('/cert', methods =['GET', 'POST'])
@@ -295,7 +317,7 @@ def certSave():
         cursor.execute(update_sql, (id,date,name,given_by,emp_id))
         db_conn.commit()
 
-        return render_template('success.html', data = id , bucket = bucket)
+        return render_template('success.html', bucket = bucket )
 
 @app.route('/certEditSave', methods =['GET', 'POST'])
 def certEditSave():
@@ -314,7 +336,15 @@ def certEditSave():
         cursor.execute(update_sql, (date,name,given_by,emp_id,id))
         db_conn.commit()
 
-        return render_template('success.html',data = id , bucket = bucket)
+        return render_template('success.html',bucket = bucket )
+
+@app.route('/certDelete', methods =['GET', 'POST'])
+def certDelete():
+    if request.method == 'POST':
+        data = request.form["input"]
+        print(data)
+        cursor.execute("DELETE FROM cert WHERE cert_id='"+data+"'")
+        return render_template('success.html', bucket = bucket)
       
 # Attendance
 @app.route('/attendance', methods =['GET', 'POST'])
@@ -399,13 +429,13 @@ def important2():
         data = request.form["input"]
         print(data)
 
-        cursor.execute("SELECT * FROM employee WHERE emp_id="+data)
+        cursor.execute("SELECT * FROM employee WHERE emp_id= '"+data+"'")
         directoryData = cursor.fetchone()
         print(directoryData)
 
         try:
 
-            cursor.execute("SELECT * FROM important WHERE emp_id="+data)
+            cursor.execute("SELECT * FROM important WHERE emp_id= '"+data+"'")
             directoryData2 = cursor.fetchall()
             print(directoryData2)
 
