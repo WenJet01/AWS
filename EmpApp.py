@@ -242,6 +242,7 @@ def deleteProfile():
         data = request.form["input"]
         print(data)
         cursor.execute("DELETE FROM employee WHERE emp_id= '"+data+"'")
+        db_conn.commit()
         return render_template('success.html', bucket = bucket)
 
 @app.route('/performance', methods =['GET', 'POST'])
@@ -356,7 +357,8 @@ def performanceDelete():
     if request.method == 'POST':
         data = request.form["input"]
         print(data)
-        cursor.execute("DELETE FROM performanceNote WHERE note_id='"+data+"'")
+        cursor.execute("DELETE FROM performanceNote WHERE note_id= '"+data+"'")
+        db_conn.commit()
         return render_template('success.html', bucket = bucket)
 
 # cert
@@ -470,6 +472,7 @@ def certDelete():
         data = request.form["input"]
         print(data)
         cursor.execute("DELETE FROM cert WHERE cert_id='"+data+"'")
+        db_conn.commit()
         return render_template('success.html', bucket = bucket)
       
 # Attendance
@@ -581,6 +584,7 @@ def attendanceDelete():
         data = request.form["input"]
         print(data)
         cursor.execute("DELETE FROM attendance WHERE attendance_id='"+data+"'")
+        db_conn.commit()
         return render_template('success.html', bucket=bucket)
       
 @app.route('/important1', methods =['GET', 'POST'])
