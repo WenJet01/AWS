@@ -8,9 +8,6 @@ from config import *
 from datetime import datetime
 
 
-
-
-
 app = Flask(__name__)
 
 bucket = custombucket
@@ -46,14 +43,6 @@ def portfolio():
     return render_template('portfolio.html', bucket=bucket)
 
 
-@app.route("/about", methods=['POST'])
-def about():
-    return render_template('www.intellipaat.com')
-
-    
-@app.route("/index", methods=['GET', 'POST'])
-def index():
-    return render_template('index.html')
 
 @app.route("/addemp", methods=['POST'])
 def AddEmp():
@@ -129,22 +118,6 @@ def directory():
     print(directoryData)
     return render_template('directory.html', data = directoryData, bucket=bucket)
 
-@app.route('/editProfile', methods =['GET', 'POST'])
-def editProfile():
-    db_conn = connections.Connection(
-    host=customhost,
-    port=3306,
-    user=customuser,
-    password=custompass,
-    db=customdb)
-    cursor = db_conn.cursor()
-    if request.method == 'POST':
-        data = request.form["input"]
-        print(data)
-        cursor.execute("SELECT * FROM employee WHERE emp_id= '"+data+"'")
-        directoryData = cursor.fetchone()
-        print(directoryData)
-        return render_template('editProfile.html', data = directoryData)
 
 @app.route('/profile', methods =['GET', 'POST'])
 def profile():
